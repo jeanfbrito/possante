@@ -1,0 +1,47 @@
+<div class="page-header">
+  <%= link_to new_vehicle_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Vehicle
+  <% end %>
+  <h1>Listing vehicles</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Numberplate</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Fabrication</th>
+            <th>Mileage</th>
+            <th style="text-align: center;">Status</th>
+            <th style="text-align: center;">Ações</th>
+            <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @vehicles) do |vehicle| %>
+            <td><%= vehicle.numberplate %></td>
+            <td><%= vehicle.brand %></td>
+            <td><%= vehicle.model %></td>
+            <td><%= vehicle.fabrication %></td>
+            <td><%= vehicle.mileage %></td>
+            <td><%= vehicle.status %></td>
+            <td style="text-align: center;" class="vehicle-actions">
+                  <%= link_to vehicle_maintenances_path(vehicle) do %>
+                    <i class="fa fa-wrench fa-2x" data-toggle="tooltip" title="Manutenções"></i>
+                  <% end %>
+                  <%= link_to vehicle_refuellings_path(vehicle) do %>
+                    <i class="fa fa-tint fa-2x" data-toggle="tooltip" title="Abastecimentos"></i>
+                  <% end %>
+                  <%= link_to vehicle_refuellings_url(vehicle) do %>
+                    <i class="fa fa-calendar fa-2x" data-toggle="tooltip" title="Lembretes/Agendamentos"></i>
+                  <% end %>
+                </td>
+            <td><%= link_to 'Show', vehicle %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

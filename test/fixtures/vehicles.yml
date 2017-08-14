@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  fabrication: MyString
+  mileage: 1
+  status: MyString
+  numberplate: MyString
+  slug: MyString
+
+two:
+  brand: MyString
+  model: MyString
+  fabrication: MyString
+  mileage: 1
+  status: MyString
+  numberplate: MyString
+  slug: MyString

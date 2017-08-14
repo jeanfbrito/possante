@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-08-13 23:37:28
+  mileage: 1
+  liter_price: 9.99
+  liters: 1.5
+  gas_station: MyString
+  traveled_mileage: 1
+  total_value: 9.99
+  result: 1
+
+two:
+  date: 2017-08-13 23:37:28
+  mileage: 1
+  liter_price: 9.99
+  liters: 1.5
+  gas_station: MyString
+  traveled_mileage: 1
+  total_value: 9.99
+  result: 1

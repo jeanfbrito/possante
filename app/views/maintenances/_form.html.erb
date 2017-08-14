@@ -1,0 +1,18 @@
+<%= simple_form_for(@maintenance) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :date %>
+    <%= f.input :cost %>
+    <%= f.input :description %>
+    <%= f.input :warranty %>
+    <%= f.input :mileage %>
+    <%= f.association :vehicle %>
+    <%= f.input :warranty_status %>
+    <%= f.input :type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

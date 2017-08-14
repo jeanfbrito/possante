@@ -1,0 +1,38 @@
+<div class="page-header">
+  <%= link_to refuellings_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_refuelling_path(@refuelling), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show refuelling</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Date:</dt>
+  <dd><%= @refuelling.date %></dd>
+
+  <dt>Mileage:</dt>
+  <dd><%= @refuelling.mileage %></dd>
+
+  <dt>Liter price:</dt>
+  <dd><%= @refuelling.liter_price %></dd>
+
+  <dt>Liters:</dt>
+  <dd><%= @refuelling.liters %></dd>
+
+  <dt>Gas station:</dt>
+  <dd><%= @refuelling.gas_station %></dd>
+
+  <dt>Traveled mileage:</dt>
+  <dd><%= @refuelling.traveled_mileage %></dd>
+
+  <dt>Total value:</dt>
+  <dd><%= @refuelling.total_value %></dd>
+
+  <dt>Result:</dt>
+  <dd><%= @refuelling.result %></dd>
+
+</dl>

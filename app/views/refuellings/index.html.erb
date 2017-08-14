@@ -1,0 +1,53 @@
+<div class="page-header">
+  <%= link_to new_vehicle_refuelling_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Refuelling
+  <% end %>
+  <h1>Listing refuellings</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Date</th>
+            <th>Km</th>
+            <th>Liter price</th>
+            <th>Liters</th>
+            <th>Gas station</th>
+            <th>Viajado</th>
+            <th>Total value</th>
+            <th>Consumo Médio</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @refuellings) do |refuelling| %>
+            <td><%= refuelling.date %></td>
+            <td><%= refuelling.mileage %></td>
+            <td><%= number_to_currency(refuelling.liter_price, precision: 3) %></td>
+            <td><%= refuelling.liters %></td>
+            <td><%= refuelling.gas_station %></td>
+            <td><%= refuelling.traveled_mileage %></td>
+            <td><%= refuelling.total_value %></td>
+            <td>
+              <% case refuelling.result.value
+                when 0 %>
+                <i  style="color: #C0C0C0;" class="fa fa-arrow-right"></i>
+                <%= number_to_currency(refuelling.average_consumption, unit: "Km/l", separator: ",", delimiter: "", format: "%n %u") %>
+                <% when 1 %>
+                <i  style="color: #008000;" class="fa fa-arrow-up"></i>
+                <%= number_to_currency(refuelling.average_consumption, unit: "Km/l", separator: ",", delimiter: "", format: "%n %u") %>
+                <% when 2 %>
+                <i  style="color: #FF0000;" class="fa fa-arrow-down"></i>
+                <%= number_to_currency(refuelling.average_consumption, unit: "Km/l", separator: ",", delimiter: "", format: "%n %u") %>
+                <% end %>
+              </td>
+        <td><%= link_to 'Edit', edit_vehicle_refuelling_path(@vehicle, refuelling) %></td>
+        <td><%= link_to 'Destroy', vehicle_refuelling_path(@vehicle, refuelling), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

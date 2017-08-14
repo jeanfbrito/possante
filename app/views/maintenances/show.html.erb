@@ -1,0 +1,38 @@
+<div class="page-header">
+  <%= link_to maintenances_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_maintenance_path(@maintenance), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show maintenance</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Date:</dt>
+  <dd><%= @maintenance.date %></dd>
+
+  <dt>Cost:</dt>
+  <dd><%= @maintenance.cost %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @maintenance.description %></dd>
+
+  <dt>Warranty:</dt>
+  <dd><%= @maintenance.warranty %></dd>
+
+  <dt>Mileage:</dt>
+  <dd><%= @maintenance.mileage %></dd>
+
+  <dt>Vehicle:</dt>
+  <dd><%= @maintenance.vehicle %></dd>
+
+  <dt>Warranty status:</dt>
+  <dd><%= @maintenance.warranty_status %></dd>
+
+  <dt>Type:</dt>
+  <dd><%= @maintenance.type %></dd>
+
+</dl>
