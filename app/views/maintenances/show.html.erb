@@ -1,12 +1,12 @@
 <div class="page-header">
-  <%= link_to maintenances_path, class: 'btn btn-default' do %>
+  <%= link_to vehicle_maintenances_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to edit_maintenance_path(@maintenance), class: 'btn btn-primary' do %>
+  <%#= link_to edit_maintenance_path(@maintenance), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
-  <% end %>
+  <%# end %>
   <h1>Show maintenance</h1>
 </div>
 
@@ -36,3 +36,14 @@
   <dd><%= @maintenance.type %></dd>
 
 </dl>
+
+Documents
+<div class="row">
+  <% @documents.each do |document| %>
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img src="<%= document.file.url %>" alt="<%= document.file.url %>">
+      </a>
+    </div>
+  <% end %>
+</div>

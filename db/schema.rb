@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813235245) do
+ActiveRecord::Schema.define(version: 20171021211222) do
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "maintenance_id"
+    t.string   "file"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -35,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170813235245) do
     t.string   "type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "documents"
     t.index ["vehicle_id"], name: "index_maintenances_on_vehicle_id"
   end
 

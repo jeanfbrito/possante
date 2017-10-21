@@ -11,6 +11,7 @@ class MaintenancesController < ApplicationController
   # GET /maintenances/1
   # GET /maintenances/1.json
   def show
+    @documents = @maintenance.documents
   end
 
   # GET /maintenances/new
