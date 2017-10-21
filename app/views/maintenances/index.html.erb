@@ -1,7 +1,11 @@
 <div class="page-header">
-  <%= link_to new_maintenance_path, class: 'btn btn-primary' do %>
+  <%= link_to new_vehicle_maintenance_path(@vehicle), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New Maintenance
+  <% end %>
+  <%= link_to vehicles_path, class: 'btn btn-default' do %>
+    <span class="fa fa-arrow-left"></span>
+    Back
   <% end %>
   <h1>Listing maintenances</h1>
 </div>
@@ -15,7 +19,6 @@
             <th>Description</th>
             <th>Warranty</th>
             <th>Mileage</th>
-            <th>Vehicle</th>
             <th>Warranty status</th>
             <th>Type</th>
             <th></th>
@@ -26,17 +29,16 @@
 
     <tbody>
       <%= content_tag_for(:tr, @maintenances) do |maintenance| %>
-            <td><%= maintenance.date %></td>
+            <td><%= maintenance.date.strftime("%d/%m/%Y") %></td>
             <td><%= maintenance.cost %></td>
             <td><%= maintenance.description %></td>
-            <td><%= maintenance.warranty %></td>
+            <td><%= maintenance.warranty.strftime("%d/%m/%Y")  %></td>
             <td><%= maintenance.mileage %></td>
-            <td><%= maintenance.vehicle %></td>
             <td><%= maintenance.warranty_status %></td>
             <td><%= maintenance.type %></td>
-            <td><%= link_to 'Show', maintenance %></td>
-        <td><%= link_to 'Edit', edit_maintenance_path(maintenance) %></td>
-        <td><%= link_to 'Destroy', maintenance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', vehicle_maintenance_path(@vehicle, maintenance) %></td>
+        <td><%#= link_to 'Edit', edit_vehicle_maintenance_path(@vehicle, maintenance) %></td>
+        <td><%#= link_to 'Destroy', vehicle_maintenance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tbody>
   </table>

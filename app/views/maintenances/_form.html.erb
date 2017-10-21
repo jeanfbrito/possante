@@ -1,4 +1,4 @@
-<%= simple_form_for(@maintenance) do |f| %>
+<%= simple_form_for [@vehicle, @maintenance], url: vehicle_maintenances_path do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

@@ -3,6 +3,10 @@
     <span class="glyphicon glyphicon-plus"></span>
     New Refuelling
   <% end %>
+  <%= link_to vehicles_path, class: 'btn btn-default' do %>
+    <span class="fa fa-arrow-left"></span>
+    Back
+  <% end %>
   <h1>Listing refuellings</h1>
 </div>
 
@@ -25,7 +29,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @refuellings) do |refuelling| %>
-            <td><%= refuelling.date %></td>
+            <td><%= refuelling.date.strftime("%d/%m/%Y")  %></td>
             <td><%= refuelling.mileage %></td>
             <td><%= number_to_currency(refuelling.liter_price, precision: 3) %></td>
             <td><%= refuelling.liters %></td>

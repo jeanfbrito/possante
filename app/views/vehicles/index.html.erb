@@ -10,12 +10,12 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
+            <th style="text-align: center;">Status</th>
             <th>Numberplate</th>
             <th>Brand</th>
             <th>Model</th>
             <th>Fabrication</th>
             <th>Mileage</th>
-            <th style="text-align: center;">Status</th>
             <th style="text-align: center;">Ações</th>
             <th></th>
       </tr>
@@ -23,12 +23,22 @@
 
     <tbody>
       <%= content_tag_for(:tr, @vehicles) do |vehicle| %>
+            <td style="text-align: center;"><%#= vehicle.status %>
+              <% case vehicle.status.value
+                       when 0 %>
+                        <i  style="color: #01C506;" class="fa fa-check-circle fa-2x"></i>
+                    <% when 1 %>
+                        <i  style="color: #FF972F;" class="fa fa-exclamation-triangle fa-2x"></i>
+                    <% when 2 %>
+                        <i  style="color: #C60000;" class="fa fa-times-circle fa-2x"></i>
+                  <% end %>
+            </td>
             <td><%= vehicle.numberplate %></td>
             <td><%= vehicle.brand %></td>
             <td><%= vehicle.model %></td>
             <td><%= vehicle.fabrication %></td>
             <td><%= vehicle.mileage %></td>
-            <td><%= vehicle.status %></td>
+
             <td style="text-align: center;" class="vehicle-actions">
                   <%= link_to vehicle_maintenances_path(vehicle) do %>
                     <i class="fa fa-wrench fa-2x" data-toggle="tooltip" title="Manutenções"></i>
