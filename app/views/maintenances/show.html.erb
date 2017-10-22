@@ -36,14 +36,24 @@
   <dd><%= @maintenance.type %></dd>
 
 </dl>
+<h3>Documents  
+  <%= link_to new_vehicle_maintenance_document_path(@vehicle, @maintenance), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New document
+  <% end %>
+</h3>
 
-Documents
+<br>
+
 <div class="row">
   <% @documents.each do |document| %>
     <div class="col-xs-6 col-md-3">
       <a href="#" class="thumbnail">
         <img src="<%= document.file.url %>" alt="<%= document.file.url %>">
       </a>
+      <div class="actions">
+        <%= link_to "Remove", vehicle_maintenance_document_path(@vehicle, @maintenance, document), :confirm => 'Are you sure?', :method => :delete %>
+      </div>
     </div>
   <% end %>
 </div>

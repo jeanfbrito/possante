@@ -26,6 +26,16 @@ class DocumentsController < ApplicationController
       render 'new'
     end
   end
+  # DELETE /maintenances/1
+  # DELETE /maintenances/1.json
+  def destroy
+    @document = @maintenance.documents.find(params[:id])
+    @document.destroy
+    respond_to do |format|
+      format.html { redirect_to vehicle_maintenance_path(@vehicle, @maintenance), notice: 'Maintenance was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def document_params
