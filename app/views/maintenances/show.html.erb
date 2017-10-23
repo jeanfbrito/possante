@@ -7,10 +7,6 @@
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
   <% end %>
-  <%#= link_to 'Destroy', vehicle_maintenance_path(@vehicle, @maintenance), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', method: :delete do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <%# end %>
   <%#= link_to 'Destroy', vehicle_maintenance, method: :delete, data: { confirm: 'Are you sure?' } %>
   <h1>Show maintenance</h1>
 </div>
@@ -39,24 +35,37 @@
   <dd><%= @maintenance.description %></dd>
 
 </dl>
+
+
 <h3>Documents
-  <%= link_to new_vehicle_maintenance_document_path(@vehicle, @maintenance), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New document
-  <% end %>
 </h3>
+<%= simple_form_for [@vehicle, @maintenance, Document.new], url: vehicle_maintenance_documents_path(@vehicle, @maintenance), :html => {:multipart => true} do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.file_field :file %>
+  </div>
+<% end %>
 
 <br>
 
+
 <div class="row">
   <% @documents.each do |document| %>
-    <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail" style="min-height:250px;height:250px;">
-        <img src="<%= document.file.url %>" alt="<%= document.file_identifier  %>">
+    <div class="col-xs-6 col-md-2">
+      <a href="<%= document.file_url %>" target="_blank" class="thumbnail" style="min-height:150px;height:150px;">
+        <img src="<%= document.file_url %>" alt="<%= document.file_identifier  %>">
       </a>
-      <div class="actions">
-        <%= link_to "Remove", vehicle_maintenance_document_path(@vehicle, @maintenance, document), data: { confirm: 'Are you sure?'} , :method => :delete %>
+      <div class="actions" style="text-align:center">
+        <%= link_to "Remove", vehicle_maintenance_document_path(@vehicle, @maintenance, document), data: { confirm: 'Are you sure?'} , :method => :delete, class: 'btn btn-danger' %>
       </div>
+      <br>
     </div>
   <% end %>
 </div>
+
+<script>
+  jQuery(function() {
+    return $('#new_document').fileupload();
+  });
+</script>

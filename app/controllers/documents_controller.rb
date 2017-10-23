@@ -21,7 +21,7 @@ class DocumentsController < ApplicationController
   def create
     @document = @maintenance.documents.build(document_params)
     if @document.save
-      redirect_to [@vehicle, @maintenance], notice: 'Successfully created refuelling.'
+      redirect_to [@vehicle, @maintenance], notice: 'Successfully created document.'
     else
       render 'new'
     end
@@ -32,7 +32,7 @@ class DocumentsController < ApplicationController
     @document = @maintenance.documents.find(params[:id])
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to vehicle_maintenance_path(@vehicle, @maintenance), notice: 'Maintenance was successfully destroyed.' }
+      format.html { redirect_to vehicle_maintenance_path(@vehicle, @maintenance), notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
