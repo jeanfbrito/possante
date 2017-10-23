@@ -3,31 +3,30 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%#= link_to edit_maintenance_path(@maintenance), class: 'btn btn-primary' do %>
+  <%= link_to edit_vehicle_maintenance_path(@vehicle, @maintenance), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <%#= link_to 'Destroy', vehicle_maintenance_path(@vehicle, @maintenance), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', method: :delete do %>
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
   <%# end %>
+  <%#= link_to 'Destroy', vehicle_maintenance, method: :delete, data: { confirm: 'Are you sure?' } %>
   <h1>Show maintenance</h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt>Date:</dt>
-  <dd><%= @maintenance.date %></dd>
+  <dd><%= @maintenance.date.strftime("%d/%m/%Y") %></dd>
 
   <dt>Cost:</dt>
   <dd><%= @maintenance.cost %></dd>
 
-  <dt>Description:</dt>
-  <dd><%= @maintenance.description %></dd>
-
   <dt>Warranty:</dt>
-  <dd><%= @maintenance.warranty %></dd>
+  <dd><%= @maintenance.warranty.strftime("%d/%m/%Y") %></dd>
 
   <dt>Mileage:</dt>
   <dd><%= @maintenance.mileage %></dd>
-
-  <dt>Vehicle:</dt>
-  <dd><%= @maintenance.vehicle %></dd>
 
   <dt>Warranty status:</dt>
   <dd><%= @maintenance.warranty_status %></dd>
@@ -35,8 +34,12 @@
   <dt>Type:</dt>
   <dd><%= @maintenance.type %></dd>
 
+
+  <dt>Description:</dt>
+  <dd><%= @maintenance.description %></dd>
+
 </dl>
-<h3>Documents  
+<h3>Documents
   <%= link_to new_vehicle_maintenance_document_path(@vehicle, @maintenance), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New document
@@ -48,11 +51,11 @@
 <div class="row">
   <% @documents.each do |document| %>
     <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img src="<%= document.file.url %>" alt="<%= document.file.url %>">
+      <a href="#" class="thumbnail" style="min-height:250px;height:250px;">
+        <img src="<%= document.file.url %>" alt="<%= document.file_identifier  %>">
       </a>
       <div class="actions">
-        <%= link_to "Remove", vehicle_maintenance_document_path(@vehicle, @maintenance, document), :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to "Remove", vehicle_maintenance_document_path(@vehicle, @maintenance, document), data: { confirm: 'Are you sure?'} , :method => :delete %>
       </div>
     </div>
   <% end %>

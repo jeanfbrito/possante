@@ -22,8 +22,6 @@
             <th>Warranty status</th>
             <th>Type</th>
             <th></th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
 
@@ -37,8 +35,6 @@
             <td><%= maintenance.warranty_status %></td>
             <td><%= maintenance.type %></td>
             <td><%= link_to 'Show', vehicle_maintenance_path(@vehicle, maintenance) %></td>
-        <td><%#= link_to 'Edit', edit_vehicle_maintenance_path(@vehicle, maintenance) %></td>
-        <td><%#= link_to 'Destroy', vehicle_maintenance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tbody>
   </table>
