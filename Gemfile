@@ -32,6 +32,7 @@ gem 'enumerize'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'carrierwave', '~> 1.0'
 gem 'jquery-fileupload-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
