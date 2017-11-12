@@ -1,4 +1,4 @@
-<%= simple_form_for(@refuelling) do |f| %>
+<%= simple_form_for [@vehicle, @refuelling] do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -7,9 +7,7 @@
     <%= f.input :liter_price %>
     <%= f.input :liters %>
     <%= f.input :gas_station %>
-    <%= f.input :traveled_mileage %>
     <%= f.input :total_value %>
-    <%= f.input :result %>
   </div>
 
   <div class="form-actions">

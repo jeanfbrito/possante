@@ -2,8 +2,8 @@ class Refuelling < ApplicationRecord
   extend Enumerize
 
   belongs_to :vehicle
-  before_create :calculaAoCriar
-  before_update :calculaAoAtualizar
+  #before_create :calculaAoCriar
+  #before_update :calculaAoAtualizar
 
   enumerize :result, :in => {
     :zero => 0,

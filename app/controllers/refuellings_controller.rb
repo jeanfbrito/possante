@@ -4,7 +4,7 @@ class RefuellingsController < ApplicationController
   # GET /refuellings
   # GET /refuellings.json
   def index
-    @refuellings = Refuelling.all
+    @refuellings = @vehicle.refuellings.order('date desc').page(params[:page])
   end
 
   # GET /refuellings/1
@@ -14,21 +14,22 @@ class RefuellingsController < ApplicationController
 
   # GET /refuellings/new
   def new
-    @refuelling = Refuelling.new
+    @refuelling = @vehicle.refuellings.build
   end
 
   # GET /refuellings/1/edit
   def edit
+    @refuelling = @vehicle.refuellings.find(params[:id])
   end
 
   # POST /refuellings
   # POST /refuellings.json
   def create
-    @refuelling = Refuelling.new(refuelling_params)
+    @refuelling = @vehicle.refuellings.build(refuelling_params)
 
     respond_to do |format|
       if @refuelling.save
-        format.html { redirect_to @refuelling, notice: 'Refuelling was successfully created.' }
+        format.html { redirect_to [@vehicle, :refuellings], notice: 'Refuelling was successfully created.' }
         format.json { render :show, status: :created, location: @refuelling }
       else
         format.html { render :new }
@@ -40,9 +41,10 @@ class RefuellingsController < ApplicationController
   # PATCH/PUT /refuellings/1
   # PATCH/PUT /refuellings/1.json
   def update
+    @refuelling = @vehicle.refuellings.find(params[:id])
     respond_to do |format|
       if @refuelling.update(refuelling_params)
-        format.html { redirect_to @refuelling, notice: 'Refuelling was successfully updated.' }
+        format.html { redirect_to vehicle_refuellings_path(@vehicle), notice: 'Refuelling was successfully updated.' }
         format.json { render :show, status: :ok, location: @refuelling }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class RefuellingsController < ApplicationController
   def destroy
     @refuelling.destroy
     respond_to do |format|
-      format.html { redirect_to refuellings_url, notice: 'Refuelling was successfully destroyed.' }
+      format.html { redirect_to vehicle_refuellings_url(@vehicle), notice: 'Refuelling was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
