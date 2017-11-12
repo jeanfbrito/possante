@@ -60,7 +60,7 @@ class MaintenancesController < ApplicationController
   def destroy
     @maintenance.destroy
     respond_to do |format|
-      format.html { redirect_to maintenances_url, notice: 'Maintenance was successfully destroyed.' }
+      format.html { redirect_to vehicle_maintenances_path(@vehicle), notice: 'Maintenance was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
