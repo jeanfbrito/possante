@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date: 2018-01-13 05:19:41
+  mileage: 1
+  vehicle: one
+
+two:
+  name: MyString
+  date: 2018-01-13 05:19:41
+  mileage: 1
+  vehicle: two

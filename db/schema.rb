@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_13_042459) do
+ActiveRecord::Schema.define(version: 2018_01_13_051941) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(version: 2018_01_13_042459) do
     t.float "average_consumption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.integer "mileage"
+    t.integer "vehicle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vehicle_id"], name: "index_reminders_on_vehicle_id"
   end
 
   create_table "vehicles", force: :cascade do |t|

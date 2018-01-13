@@ -10,6 +10,7 @@ class Vehicle < ApplicationRecord
   }, default: :ok #, scope: true
 
   has_many :refuellings
+  has_many :reminders
   has_many :maintenances
   belongs_to :user
 
