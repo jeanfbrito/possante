@@ -1,6 +1,6 @@
 class MaintenancesController < ApplicationController
   before_action :set_maintenance, only: [:show, :edit, :update, :destroy]
-  before_filter :find_vehicle
+  before_action :find_vehicle
 
   # GET /maintenances
   # GET /maintenances.json

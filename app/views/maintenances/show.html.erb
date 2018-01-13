@@ -43,33 +43,25 @@
 
 <h3>Documents
 </h3>
-<%= simple_form_for [@vehicle, @maintenance, Document.new], url: vehicle_maintenance_documents_path(@vehicle, @maintenance), :html => {:multipart => true} do |f| %>
-  <%= f.error_notification %>
+<h4 class="progress" style="display: none">Fazendo upload <span class="progress_count"></span>% concluido</h4>
 
-  <div class="form-inputs">
-    <%= f.file_field :file %>
-  </div>
+<%= form_with model: [@vehicle, @maintenance], url: vehicle_maintenance_file_uploads_path(@vehicle, @maintenance),
+              method: :post, id: "upload_file", local: true do |f| %>
+  <%= f.file_field :files, multiple: true, direct_upload: true %><br />
+  <%= f.submit 'Clique para fazer upload' %>
 <% end %>
 
 <br>
-
-
 <div class="row">
-  <% @documents.each do |document| %>
+  <% @maintenance.files.each do |document| %>
     <div class="col-xs-6 col-md-2">
-      <a href="<%= document.file_url %>" target="_blank" class="thumbnail" style="min-height:150px;height:150px;">
-        <img src="<%= document.file_url %>" alt="<%= document.file_identifier  %>">
+      <a href="<%= url_for(document) %>" target="_blank" class="thumbnail" style="min-height:150px;height:150px;">
+        <img src="<%= url_for(document.variant(resize: "155x140")) %>" alt="<%= document.filename  %>">
       </a>
       <div class="actions" style="text-align:center">
-        <%= link_to "Remove", vehicle_maintenance_document_path(@vehicle, @maintenance, document), data: { confirm: 'Are you sure?'} , :method => :delete, class: 'btn btn-danger' %>
+        <%= link_to "Remove", vehicle_maintenance_file_upload_path(@vehicle, @maintenance, document), method: :delete, data: { confirm: "Tem certeza?" }, class: 'btn btn-danger' %>
       </div>
       <br>
     </div>
   <% end %>
 </div>
-
-<script>
-  jQuery(function() {
-    return $('#new_document').fileupload();
-  });
-</script>

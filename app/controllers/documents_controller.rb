@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
 
-  before_filter :find_maintenance
-  before_filter :find_vehicle
+  before_action :find_maintenance
+  before_action :find_vehicle
 
   def index
     @vehicle = @maintenance.vehicle

@@ -15,5 +15,15 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
-//= require jquery-fileupload/basic
 //= require bootstrap-datepicker
+//= require activestorage
+
+$(document).on("turbolinks:load", function () {
+    $("#upload_file").on("direct-uploads:start", function () {
+        $("h4.progress").show();
+    });
+
+    $("#upload_file").on("direct-upload:progress", function (event) {
+        $("h4.progress span.progress_count").html(event.detail.progress);
+    });
+});

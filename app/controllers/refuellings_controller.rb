@@ -1,6 +1,6 @@
 class RefuellingsController < ApplicationController
   before_action :set_refuelling, only: [:show, :edit, :update, :destroy]
-  before_filter :find_vehicle
+  before_action :find_vehicle
   # GET /refuellings
   # GET /refuellings.json
   def index
