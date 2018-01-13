@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_13_002910) do
+ActiveRecord::Schema.define(version: 2018_01_13_042459) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_01_13_002910) do
     t.integer "mileage"
     t.integer "vehicle_id"
     t.string "warranty_status"
-    t.string "type"
+    t.string "maintenance_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "documents"

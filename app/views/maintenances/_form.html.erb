@@ -7,9 +7,7 @@
     <%= f.input :description %>
     <%= f.input :warranty, as: :string, input_html: { class: "datepicker", value:  f.object.warranty ? f.object.warranty.strftime('%d/%m/%Y') : Date.today.strftime('%d/%m/%Y') } %>
     <%= f.input :mileage %>
-    <%= f.association :vehicle %>
-    <%= f.input :warranty_status %>
-    <%= f.input :type %>
+    <%= f.input :maintenance_type %>
   </div>
 
   <div class="form-actions">

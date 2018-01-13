@@ -73,7 +73,7 @@ class MaintenancesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def maintenance_params
-      params.require(:maintenance).permit(:date, :cost, :description, :warranty, :mileage, :vehicle_id, :warranty_status, :type)
+      params.require(:maintenance).permit(:date, :cost, :description, :warranty, :mileage, :vehicle_id, :warranty_status, :maintenance_type)
     end
 
     def find_vehicle

@@ -32,8 +32,13 @@
             <td><%= maintenance.description %></td>
             <td><%= maintenance.warranty.strftime("%d/%m/%Y")  %></td>
             <td><%= maintenance.mileage %></td>
-            <td><%= maintenance.warranty_status %></td>
-            <td><%= maintenance.type %></td>
+            <td><% if (maintenance.warranty - Time.now) > 0 %>
+                  <font color="green"><b> <%= distance_of_time_in_words(maintenance.warranty, Time.now) %>  available <i class="fa fa-check-circle fa-lg"> </i></b></font>
+                  <% else %>
+                  <font color="grey"><b><%= distance_of_time_in_words(maintenance.warranty, Time.now) %>  expired <i class="fa fa-ban fa-lg"> </i></b></font>
+                  <% end %>
+            </td>
+            <td><%= maintenance.maintenance_type.value %></td>
             <td><%= link_to 'Show', vehicle_maintenance_path(@vehicle, maintenance) %></td>
       <% end %>
     </tbody>

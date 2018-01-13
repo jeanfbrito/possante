@@ -29,10 +29,15 @@
   <dd><%= @maintenance.mileage %></dd>
 
   <dt>Warranty status:</dt>
-  <dd><%= @maintenance.warranty_status %></dd>
+  <dd><% if (@maintenance.warranty - Time.now) > 0 %>
+       <font color="green"><b> <%= distance_of_time_in_words(@maintenance.warranty, Time.now) %>  available <i class="fa fa-check-circle fa-lg"> </i></b></font>
+      <% else %>
+       <font color="red"><b><%= distance_of_time_in_words(@maintenance.warranty, Time.now) %>  expired <i class="fa fa-ban fa-lg"> </i></b></font>
+      <% end %>
+  </dd>
 
   <dt>Type:</dt>
-  <dd><%= @maintenance.type %></dd>
+  <dd><%= @maintenance.maintenance_type.value %></dd>
 
 
   <dt>Description:</dt>
@@ -44,13 +49,11 @@
 <h3>Documents
 </h3>
 <h4 class="progress" style="display: none">Fazendo upload <span class="progress_count"></span>% concluido</h4>
-
 <%= form_with model: [@vehicle, @maintenance], url: vehicle_maintenance_file_uploads_path(@vehicle, @maintenance),
               method: :post, id: "upload_file", local: true do |f| %>
   <%= f.file_field :files, multiple: true, direct_upload: true %><br />
   <%= f.submit 'Clique para fazer upload' %>
 <% end %>
-
 <br>
 <div class="row">
   <% @maintenance.files.each do |document| %>
